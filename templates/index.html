@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+
+{% block main %}
+{% for car in all_info %}
+    <div>{{ car }}</div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Part</th>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Mileague</th>
+                <th>Cost</th>
+                <th>Place</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for point in all_info[car] %}
+                <tr>
+
+                    <td>{{ point["part"] }}</td>
+                    <td>{{ point["service"] }}</td>
+                    <td>{{ point["date"] }}</td>
+                    <td>{{ point["mileague"] }}</td>
+                    <td>{{ point["cost"] }}</td>
+                    <td>{{ point["place"] }}</td>
+                    <td>{{ point["note"] }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="4">Total: </td>
+                    <td>{{ cars_total[car] }}</td>
+                </tr>
+        </tbody>
+    </table>
+{% endfor %}
+{% endblock %}

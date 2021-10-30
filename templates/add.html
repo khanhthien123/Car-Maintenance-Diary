@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add a car
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post">
+        <select name="brand" class="form-select" aria-label="Default select example" >
+            <option selected>Choose your brand</option>
+            {% for o in data %}
+            <option value="{{ o }}">{{ o }}</option>
+            {% endfor %}
+          </select>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Year</label>
+            <input name="year" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Year">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Type: SUV/Sedan/Truck</label>
+            <select required name="type" class="form-select" aria-label="Default select example">
+              <option selected value="">Type</option>
+              {% for o in types %}
+              <option value="{{ o }}">{{ o }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <input type="submit">
+    </form>
+{% endblock %}

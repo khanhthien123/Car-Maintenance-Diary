@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Maintenance
+{% endblock %}
+
+{% block main %}
+    <form action="/maintain" method="post">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Choose a date</label>
+        <input required name="date" type="date" class="form-control" id="exampleFormControlInput1" placeholder="Ex: 06/28/2021">
+      </div>
+        <div>Choose your car</div>
+      <select name="car" class="form-select" aria-label="Default select example" required>
+        <option selected value="">Which car?</option>
+        {% for o in printed_cars %}
+        <option value="{{ o }}">{{ printed_cars[o] }}</option>
+        {% endfor %}
+      </select>
+      <div>Choose a part</div>
+        <select required name="part" class="form-select" aria-label="Default select example">
+            <option selected value="">Choose a part</option>
+            {% for o in parts %}
+            <option value="{{ o }}">{{ o }}</option>
+            {% endfor %}
+          </select>
+      <div>What did you do?</div>
+        <select required name="maintain" class="form-select" aria-label="Default select example">
+            <option selected value="">Replacement or Repairs</option>
+            {% for o in fixing %}
+            <option value="{{ o }}">{{ o }}</option>
+            {% endfor %}
+          </select>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Current Mileague</label>
+            <input required name="mileague" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Current Mileague">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">How much</label>
+            <input required name="money" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Money in $">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Where did you do it? You can specify a particular address or can just say "A garage near my house"</label>
+            <input name="where" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ex: a garage near my house">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">You can specify what you did here. It is optional</label>
+            <input name="note" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Note">
+          </div>
+          <input type="submit">
+    </form>
+{% endblock %}
